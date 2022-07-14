@@ -1,3 +1,4 @@
+# python3.10
 from functions import get_web_page_selenium, skip_cloudflare
 from functions import Settings
 from functions import MySqlDataBase
