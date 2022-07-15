@@ -52,6 +52,7 @@ def skip_cloudflare(link: str) -> webdriver:
     driver = webdriver.Chrome(options=options)
     driver.set_page_load_timeout(10)
     driver.get(link)
+    time.sleep(5)
 
     try:
         while bs4.BeautifulSoup(driver.page_source, 'html.parser').find('title').text == 'Please Wait... | Cloudflare':
@@ -60,6 +61,8 @@ def skip_cloudflare(link: str) -> webdriver:
         pass
     except WebDriverException:
         pass
+    except:
+        return driver
 
     if bs4.BeautifulSoup(driver.page_source, 'html.parser').find('title').text == 'Please Wait... | Cloudflare':
         driver.quit()
